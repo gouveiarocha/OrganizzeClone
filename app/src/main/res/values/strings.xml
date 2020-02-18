@@ -1,0 +1,49 @@
+<resources>
+
+    <string name="app_name">OrganizzeClone</string>
+
+    <!-- title -->
+    <string name="app_image_content">Imagem</string>
+    <string name="titulo_intro1">Organize suas contas de \n onde estiver!</string>
+    <string name="subtitulo_intro1">Simples e Gratuíto!</string>
+    <string name="titulo_intro2">Saiba para onde está \n indo seu dinheiro!</string>
+    <string name="subtitulo_intro2">Categorize seu orçamento e veja o \n destino de cada centavo!</string>
+    <string name="titulo_intro3">Nunca mais esqueça de \n pagar uma conta!</string>
+    <string name="subtitulo_intro3">Receba alertas onde estiver!</string>
+    <string name="titulo_intro4">Tudo organizado no seu celular!</string>
+    <string name="subtitulo_intro4">Integrado com a Web!</string>
+
+    <!-- title -->
+    <string name="intro_cadastro_comecar">Vamos Começar!</string>
+    <string name="intro_cadastro_criar_conta">Crie sua Conta Gratuitamente!</string>
+    <string name="intro_cadastro_animar">E Junte-se a mais de meio milhão de pessoas!!!</string>
+    <string name="intro_cadastro_btn_cadastrar">CADASTRE-SE</string>
+    <string name="intro_cadastro_login">Já Possuo Conta</string>
+
+    <!-- title -->
+    <string name="cadastro_criar_conta">Crie sua Conta Gratuitamente!</string>
+    <string name="cadastro_nome">Nome</string>
+    <string name="cadastro_email">E-mail</string>
+    <string name="cadastro_senha">Senha</string>
+    <string name="cadastro_confirmar_senha">Confirmar Senha</string>
+    <string name="cadastro_btn_cadastrar">Cadastrar</string>
+    <string name="cadastro_termos_uso">Termos de Uso</string>
+
+    <!-- title -->
+    <string name="login_acessar_conta">Acesse sua Conta!</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_btn_logar">Logar</string>
+    <string name="login_recuperar_senha">Recuperar Senha</string>
+
+    <!-- title -->
+    <string name="erro_validacao_nome">Atenção: Preecher o Nome.</string>
+    <string name="erro_validacao_email">Atenção: Preecher o Email.</string>
+    <string name="erro_validacao_senha">Atenção: Preecher a Senha.</string>
+    <string name="sucesso_cadastrar_usuario">Usuário Cadastrado com Sucesso!</string>
+    <string name="erro_cadastrar_usuario">Erro ao Cadastrar Usuário!</string>
+    <string name="sucesso_login_usuario">Sucesso ao fazer Login.</string>
+    <string name="erro_login_usuario">Erro ao fazer Login.</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+
+</resources>

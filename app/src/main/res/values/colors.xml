@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Cores Principais -->
+    <color name="colorPrimary">#00ACC1</color>
+    <color name="colorPrimaryDark">#00838F</color>
+    <color name="colorAccent">#006064</color>
+
+    <!-- Subtitulos -->
+    <color name="colorSub">#666666</color>
+
+    <!-- Cores Receitas -->
+    <color name="primaryReceita">#00d39e</color>
+    <color name="primaryDarkReceita">#01946C</color>
+    <color name="accentReceita">#00d39e</color>
+
+    <!-- Cores Despesas -->
+    <color name="primaryDespesa">#ff706a</color>
+    <color name="primaryDarkDespesa">#CF534E</color>
+    <color name="accentDespesa">#ff706a</color>
+
+</resources>
