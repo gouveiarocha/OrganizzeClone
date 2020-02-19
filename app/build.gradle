@@ -39,4 +39,7 @@ dependencies {
     //FloatActionButton/Menu
     implementation 'com.github.clans:fab:1.6.4'
 
+    //Material Calendary
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.1'
+
 }

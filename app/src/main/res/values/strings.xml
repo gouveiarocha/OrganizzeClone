@@ -21,7 +21,7 @@
     <string name="intro_cadastro_login">Já Possuo Conta</string>
 
     <!-- title -->
-    <string name="cadastro_criar_conta">Crie sua Conta Gratuitamente!</string>
+    <string name="cadastro_criar_conta">Crie sua Conta!</string>
     <string name="cadastro_nome">Nome</string>
     <string name="cadastro_email">E-mail</string>
     <string name="cadastro_senha">Senha</string>
