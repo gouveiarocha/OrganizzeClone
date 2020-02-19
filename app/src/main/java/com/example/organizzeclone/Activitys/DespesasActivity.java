@@ -1,5 +1,6 @@
 package com.example.organizzeclone.Activitys;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,53 +8,75 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.Base64Custom;
 import com.example.organizzeclone.Helper.DateCustom;
 import com.example.organizzeclone.Modelo.Movimentacao;
+import com.example.organizzeclone.Modelo.Usuario;
 import com.example.organizzeclone.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class DespesasActivity extends AppCompatActivity {
 
-    private EditText valor;
-    private TextInputEditText data, categoria, descricao;
+    private EditText editValor;
+    private TextInputEditText editData, editCategoria, editDescricao;
+
+    private Double despesaTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
 
-        valor = findViewById(R.id.etxt_valor);
-        data = findViewById(R.id.etxt_data);
-        categoria = findViewById(R.id.etxt_categoria);
-        descricao = findViewById(R.id.etxt_descricao);
+        //REF. Componentes
+        editValor = findViewById(R.id.etxt_valor);
+        editData = findViewById(R.id.etxt_data);
+        editCategoria = findViewById(R.id.etxt_categoria);
+        editDescricao = findViewById(R.id.etxt_descricao);
 
-        data.setText(DateCustom.getDataAtual());
+        editData.setText(DateCustom.getDataAtual());    //Setar data atual.
+        recuperarDespesaTotal();                        //Método com Listener para Recuperar a despesa total do Usuário.
 
     }
 
     public void salvarDespesa(View view) {
 
-        if (validarDados()) {
-            double valorRec = Double.parseDouble(valor.getText().toString());
-            String dataRec = data.getText().toString();
-            Movimentacao movimentacao = new Movimentacao(valorRec, dataRec, categoria.getText().toString(), descricao.getText().toString(), "D");
-            movimentacao.salvar(dataRec);
+        if (validarDadosDespesa()) {
+            Toast.makeText(this, "Despesa Salva com Sucesso!", Toast.LENGTH_SHORT).show();
+
+            Double valor = Double.parseDouble(editValor.getText().toString());
+            String data = editData.getText().toString();
+
+            Movimentacao movimentacao = new Movimentacao(valor, data, editCategoria.getText().toString(), editDescricao.getText().toString(), "D");
+
+            //Atualiza a despesa.
+            double despesaAtualizada = despesaTotal + valor;
+            ConfigFirebase.refUsuarios().child(ConfigFirebase.getIdUsuario()).child("totDespesa").setValue(despesaAtualizada);
+
+            movimentacao.salvar(data);
+
             finish();
         }
 
     }
 
-    public Boolean validarDados() {
+    public Boolean validarDadosDespesa() {
 
-        String txtValor = valor.getText().toString();
-        String txtData = valor.getText().toString();
-        String txtCategoria = valor.getText().toString();
-        String txtDescricao = valor.getText().toString();
+        String valor = editValor.getText().toString();
+        String data = editData.getText().toString();
+        String categoria = editCategoria.getText().toString();
+        String descricao = editDescricao.getText().toString();
 
-        if (!txtValor.isEmpty()) {
-            if (!txtData.isEmpty()) {
-                if (!txtCategoria.isEmpty()) {
-                    if (!txtDescricao.isEmpty()) {
+        if (!valor.isEmpty()) {
+            if (!data.isEmpty()) {
+                if (!categoria.isEmpty()) {
+                    if (!descricao.isEmpty()) {
 
                         return true;
 
@@ -73,6 +96,31 @@ public class DespesasActivity extends AppCompatActivity {
             Toast.makeText(this, "Atenção! Valor não Preenchido!", Toast.LENGTH_LONG).show();
             return false;
         }
+
+    }
+
+    public void recuperarDespesaTotal() {
+
+        FirebaseDatabase database = ConfigFirebase.getDatabase();
+        final String idUsuario = ConfigFirebase.getIdUsuario();
+        DatabaseReference usuarios = database.getReference("usuarios").child(idUsuario);
+
+        usuarios.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Recupera os dados em tempo real...
+
+                String valorRec = dataSnapshot.child("totDespesa").getValue().toString();
+                double d = Double.parseDouble(valorRec);
+
+                despesaTotal = d;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

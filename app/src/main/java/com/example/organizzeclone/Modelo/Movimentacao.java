@@ -1,11 +1,7 @@
 package com.example.organizzeclone.Modelo;
 
 import com.example.organizzeclone.Config.ConfigFirebase;
-import com.example.organizzeclone.Helper.Base64Custom;
 import com.example.organizzeclone.Helper.DateCustom;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Movimentacao {
 
@@ -65,19 +61,11 @@ public class Movimentacao {
 
     public void salvar(String data) {
 
-        //Recuperar (email) do Usuario Logado
-        FirebaseAuth auth = ConfigFirebase.getAuth();
-        String idUsuario = Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
-
-        //Recuperar MesAno.
-        String mesAno = DateCustom.getDataMesAno(data);
-
-        //Ref. Database.
-        FirebaseDatabase database = ConfigFirebase.getDatabase();
-        DatabaseReference movimentacoes = database.getReference("movimentacoes");
+        String idUsuario = ConfigFirebase.getIdUsuario();       //Recuperar Email/ID
+        String mesAno = DateCustom.getDataMesAno(data);         //Recuperar MesAno.
 
         //Salvar
-        movimentacoes
+        ConfigFirebase.refMovimentacoes()
                 .child(idUsuario)   //id do usuario
                 .child(mesAno)      //mes e ano
                 .push()             //id da movimentação
