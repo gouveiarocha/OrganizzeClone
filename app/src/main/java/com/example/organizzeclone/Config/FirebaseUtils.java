@@ -30,6 +30,13 @@ public class ConfigFirebase {
         return database;
     }
 
+    //Deslogar usuario
+    public static Boolean deslogar(){
+        auth = ConfigFirebase.getAuth();
+        auth.signOut();
+        return true;
+    }
+
     /**
      * Ret. Referencias...
      */
