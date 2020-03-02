@@ -5,7 +5,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ConfigFirebase {
+public class FirebaseUtils {
 
     private static FirebaseAuth auth;
     private static FirebaseDatabase database;
@@ -31,10 +31,9 @@ public class ConfigFirebase {
     }
 
     //Deslogar usuario
-    public static Boolean deslogar(){
-        auth = ConfigFirebase.getAuth();
+    public static void deslogar(){
+        auth = FirebaseUtils.getAuth();
         auth.signOut();
-        return true;
     }
 
     /**
@@ -43,13 +42,13 @@ public class ConfigFirebase {
 
     //Retorna a referencia para o nó Usuarios.
     public static DatabaseReference refUsuarios(){
-        database = ConfigFirebase.getDatabase();
+        database = FirebaseUtils.getDatabase();
         return database.getReference("usuarios");
     }
 
     //Retorna a referencia para o nó Movimentacoes.
     public static DatabaseReference refMovimentacoes(){
-        database = ConfigFirebase.getDatabase();
+        database = FirebaseUtils.getDatabase();
         return database.getReference("movimentacoes");
     }
 
@@ -59,7 +58,7 @@ public class ConfigFirebase {
 
     //Retorna (Email/ID) do Usuario Logado
     public static String getIdUsuario(){
-        auth = ConfigFirebase.getAuth();
+        auth = FirebaseUtils.getAuth();
         return Base64Custom.codificarBase64(auth.getCurrentUser().getEmail());
     }
 
