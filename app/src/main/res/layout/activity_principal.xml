@@ -76,7 +76,7 @@
             app:fab_colorNormal="@color/primaryReceita"
             app:fab_colorPressed="@color/primaryDarkReceita"
             app:fab_colorRipple="@color/accentReceita"
-            app:fab_shadowColor="@color/accentReceita"
+            app:fab_shadowColor="@color/colorSub"
             fab:fab_label="Nova Receita"
             fab:fab_size="mini" />
 
@@ -89,7 +89,7 @@
             app:fab_colorNormal="@color/primaryDespesa"
             app:fab_colorPressed="@color/primaryDarkDespesa"
             app:fab_colorRipple="@color/accentDespesa"
-            app:fab_shadowColor="@color/accentDespesa"
+            app:fab_shadowColor="@color/colorSub"
             fab:fab_label="Nova Despesa"
             fab:fab_size="mini" />
 

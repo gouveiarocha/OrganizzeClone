@@ -8,14 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
-import com.example.organizzeclone.Helper.Base64Custom;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.DateCustom;
 import com.example.organizzeclone.Modelo.Movimentacao;
-import com.example.organizzeclone.Modelo.Usuario;
 import com.example.organizzeclone.R;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,7 +54,7 @@ public class DespesasActivity extends AppCompatActivity {
 
             //Atualiza a despesa.
             double despesaAtualizada = despesaTotal + valor;
-            ConfigFirebase.refUsuarios().child(ConfigFirebase.getIdUsuario()).child("totDespesa").setValue(despesaAtualizada);
+            FirebaseUtils.refUsuarios().child(FirebaseUtils.getIdUsuario()).child("totDespesa").setValue(despesaAtualizada);
 
             movimentacao.salvar(data);
 
@@ -101,8 +98,8 @@ public class DespesasActivity extends AppCompatActivity {
 
     public void recuperarDespesaTotal() {
 
-        FirebaseDatabase database = ConfigFirebase.getDatabase();
-        final String idUsuario = ConfigFirebase.getIdUsuario();
+        FirebaseDatabase database = FirebaseUtils.getDatabase();
+        final String idUsuario = FirebaseUtils.getIdUsuario();
         DatabaseReference usuarios = database.getReference("usuarios").child(idUsuario);
 
         usuarios.addValueEventListener(new ValueEventListener() {

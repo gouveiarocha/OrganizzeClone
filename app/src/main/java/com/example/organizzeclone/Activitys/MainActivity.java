@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.organizzeclone.Activitys.CadastroActivity;
-import com.example.organizzeclone.Activitys.LoginActivity;
-import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
@@ -43,7 +41,7 @@ public class MainActivity extends IntroActivity {
 
     public void verificarUsuarioLogado(){
 
-        auth = ConfigFirebase.getAuth();
+        auth = FirebaseUtils.getAuth();
         if (auth.getCurrentUser() != null){
             startActivity(new Intent(MainActivity.this, PrincipalActivity.class));
         }

@@ -8,16 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.DateCustom;
 import com.example.organizzeclone.Modelo.Movimentacao;
 import com.example.organizzeclone.R;
-import com.github.clans.fab.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class ReceitasActivity extends AppCompatActivity {
@@ -55,7 +52,7 @@ public class ReceitasActivity extends AppCompatActivity {
 
             //Atualiza a receita.
             double receitaAtualizada = receitaTotal + valor;
-            ConfigFirebase.refUsuarios().child(ConfigFirebase.getIdUsuario()).child("totReceita").setValue(receitaAtualizada);
+            FirebaseUtils.refUsuarios().child(FirebaseUtils.getIdUsuario()).child("totReceita").setValue(receitaAtualizada);
 
             movimentacao.salvar(data);
 
@@ -99,7 +96,7 @@ public class ReceitasActivity extends AppCompatActivity {
 
     public void recuperarReceitaTotal() {
 
-        ConfigFirebase.refUsuarios().child(ConfigFirebase.getIdUsuario()).addValueEventListener(new ValueEventListener() {
+        FirebaseUtils.refUsuarios().child(FirebaseUtils.getIdUsuario()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //Recupera os dados em tempo real...

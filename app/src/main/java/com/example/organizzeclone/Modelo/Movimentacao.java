@@ -1,12 +1,12 @@
 package com.example.organizzeclone.Modelo;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.DateCustom;
 
 public class Movimentacao {
 
     private double valor;
-    private String data, categoria, descricao, tipo;
+    private String key, data, categoria, descricao, tipo;
 
     public Movimentacao() {
     }
@@ -17,6 +17,14 @@ public class Movimentacao {
         this.categoria = categoria;
         this.descricao = descricao;
         this.tipo = tipo;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public double getValor() {
@@ -61,11 +69,11 @@ public class Movimentacao {
 
     public void salvar(String data) {
 
-        String idUsuario = ConfigFirebase.getIdUsuario();       //Recuperar Email/ID
+        String idUsuario = FirebaseUtils.getIdUsuario();       //Recuperar Email/ID
         String mesAno = DateCustom.getDataMesAno(data);         //Recuperar MesAno.
 
         //Salvar
-        ConfigFirebase.refMovimentacoes()
+        FirebaseUtils.refMovimentacoes()
                 .child(idUsuario)   //id do usuario
                 .child(mesAno)      //mes e ano
                 .push()             //id da movimentação

@@ -1,6 +1,5 @@
-package com.example.organizzeclone.Config;
+package com.example.organizzeclone.Helper;
 
-import com.example.organizzeclone.Helper.Base64Custom;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -50,6 +49,12 @@ public class FirebaseUtils {
     public static DatabaseReference refMovimentacoes(){
         database = FirebaseUtils.getDatabase();
         return database.getReference("movimentacoes");
+    }
+
+    //Retorna a referencia para o nó Configs.
+    public static DatabaseReference refConfigs(){
+        database = FirebaseUtils.getDatabase();
+        return database.getReference("configs");
     }
 
     /**

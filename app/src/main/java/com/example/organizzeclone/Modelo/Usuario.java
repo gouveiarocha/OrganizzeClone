@@ -1,10 +1,8 @@
 package com.example.organizzeclone.Modelo;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.Base64Custom;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Exclude;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Usuario {
 
@@ -88,12 +86,7 @@ public class Usuario {
     }
 
     public void salvar(){
-
-        FirebaseDatabase database = ConfigFirebase.getDatabase();
-        DatabaseReference usuarios = database.getReference("usuarios");
-
-        usuarios.child(this.id).setValue(this);
-
+        FirebaseUtils.refUsuarios().child(this.id).setValue(this);
     }
 
 }

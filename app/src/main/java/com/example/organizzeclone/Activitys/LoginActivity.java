@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Modelo.Usuario;
 import com.example.organizzeclone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,8 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -61,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     //Método para Logar o Usuário...
     public void logarUsuario(Usuario usuario) {
 
-        auth = ConfigFirebase.getAuth();
+        auth = FirebaseUtils.getAuth();
         auth.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

@@ -8,8 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.organizzeclone.Config.ConfigFirebase;
-import com.example.organizzeclone.Helper.Base64Custom;
+import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Modelo.Usuario;
 import com.example.organizzeclone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,8 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -67,16 +64,14 @@ public class CadastroActivity extends AppCompatActivity {
     //Método para Cadastrar o Usuario...
     public void cadastrarUsuario(final Usuario usuario) {
 
-        auth = ConfigFirebase.getAuth();
+        auth = FirebaseUtils.getAuth();
         auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             usuario.salvar();
                             finish();
-
                         } else {
 
                             String excecao = "";
