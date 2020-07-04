@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.DateCustom;
-import com.example.organizzeclone.Modelo.Movimentacao;
+import com.example.organizzeclone.Model.Movimentacao;
 import com.example.organizzeclone.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;

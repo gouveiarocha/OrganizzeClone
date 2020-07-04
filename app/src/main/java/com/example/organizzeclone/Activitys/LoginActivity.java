@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.organizzeclone.Helper.FirebaseUtils;
-import com.example.organizzeclone.Modelo.Usuario;
+import com.example.organizzeclone.Model.Usuario;
 import com.example.organizzeclone.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

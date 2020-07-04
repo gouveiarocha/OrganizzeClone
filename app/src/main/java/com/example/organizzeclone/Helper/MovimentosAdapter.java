@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.organizzeclone.Modelo.Movimentacao;
+import com.example.organizzeclone.Model.Movimentacao;
 import com.example.organizzeclone.R;
 
 import java.util.List;

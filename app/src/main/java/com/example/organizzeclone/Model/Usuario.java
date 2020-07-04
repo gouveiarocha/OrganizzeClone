@@ -1,4 +1,4 @@
-package com.example.organizzeclone.Modelo;
+package com.example.organizzeclone.Model;
 
 import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.Base64Custom;

@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.organizzeclone.Helper.FirebaseUtils;
 import com.example.organizzeclone.Helper.MovimentosAdapter;
-import com.example.organizzeclone.Modelo.Movimentacao;
+import com.example.organizzeclone.Model.Movimentacao;
 import com.github.clans.fab.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -73,7 +73,7 @@ public class PrincipalActivity extends AppCompatActivity {
         iniciarCalendario();
         iniciarSwipe();
 
-        avisoExclusao();
+        //avisoExclusao();
 
         //Configura Adapter e Recyclerview
         adapter = new MovimentosAdapter(listaMovimentacoes, this);
@@ -140,7 +140,7 @@ public class PrincipalActivity extends AppCompatActivity {
                         .child(FirebaseUtils.getIdUsuario())
                         .child(mesAnoSelecionado)
                         .child(movimentacao.getKey()).removeValue();    //recupera a key e remove os valores
-                adapter.notifyItemRemoved(position);    //notifica que um item foi removido. o adapter retira o item.
+                adapter.notifyItemRemoved(position);                    //notifica que um item foi removido. o adapter retira o item.
                 atualizarSaldo();
             }
         });
@@ -253,18 +253,7 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void avisoExclusao(){
 
-        FirebaseUtils.refConfigs().child(FirebaseUtils.getIdUsuario()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                configMostrarAvisoExclusao = dataSnapshot.child("Mostrar_Aviso_Exclusao").getValue().toString();
-                Log.i("douglas", "aqui: " + configMostrarAvisoExclusao);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        //em desenvolvimento
 
     }
 
